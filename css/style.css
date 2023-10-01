@@ -163,6 +163,12 @@ body {
     transform: rotate(1turn);
   }
 }
+
+.title {
+  font-size: var(--fs-title);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.5px;
+}
 /*-----------------------------------*\
   #HEADER
 \*-----------------------------------*/
@@ -256,6 +262,85 @@ body {
 /*-----------------------------------*\
   #SIDEBAR
 \*-----------------------------------*/
+.slidebar {
+  position: absolute;
+  background-color: var(--background);
+  top: 96px;
+  bottom: 0;
+  left: -340px;
+  max-width: 340px;
+  width: 100%;
+  border-block-start: 1px solid var(--banner-background);
+  overflow-y: overlay;
+  z-index: 4;
+  visibility: hidden;
+  transition: var(--transition-long);
+}
+.slidebar.active {
+  transform: translateX(340px);
+  visibility: visible;
+}
+.slidebar-inner {
+  display: grid;
+  gap: 20px;
+  padding-block: 36px;
+}
+.slidebar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.slidebar:is(:hover, :focus-within)::-webkit-scrollbar-thumb {
+  background-color: var(--banner-background);
+}
+.slidebar::-webkit-scrollbar-button {
+  height: 16px;
+}
+.slidebar-list,
+.slidebar-footer {
+  padding-inline: 36px;
+}
+.slidebar-link {
+  color: var(--on-surface-variant);
+  transition: var(--transition-short);
+}
+.slidebar-link:is(:hover, :focus-visible) {
+  color: var(--on-background);
+}
+.slidebar-list {
+  display: grid;
+  gap: 8px;
+}
+.slidebar-list .title {
+  margin-block-end: 8px;
+}
+.slidebar-footer {
+  border-block-start: 1px solid var(--banner-background);
+  padding-block-start: 28px;
+  margin-block-start: 16px;
+}
+
+.copyright {
+  color: var(--on-surface-variant);
+  margin-block-end: 20px;
+}
+.copyright a {
+  display: inline-block;
+}
+.overlay {
+  position: fixed;
+  top: 96px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--background);
+  pointer-events: none;
+  opacity: 0;
+  transition: var(--transition-short);
+  z-index: 3;
+}
+.overlay.active {
+  opacity: 0.5;
+  pointer-events: all;
+}
 
 /*-----------------------------------*\
   #HOME PAGE
